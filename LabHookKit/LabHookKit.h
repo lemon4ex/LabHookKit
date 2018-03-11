@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import <LabHookKit/BaseHookLogic.h>
+#import <LabHookKit/HookLogicMgr.h>
+
+
 //! Project version number for LabHookKit.
 FOUNDATION_EXPORT double LabHookKitVersionNumber;
 

@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		E9FD65252055A6C600668DF9 /* LabHookKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E9FD65242055A6C600668DF9 /* LabHookKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9FD65322055A70000668DF9 /* HookLogicMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = E9FD652E2055A70000668DF9 /* HookLogicMgr.h */; };
+		E9FD65332055A70000668DF9 /* HookLogicMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9FD652F2055A70000668DF9 /* HookLogicMgr.mm */; };
+		E9FD65412055A93E00668DF9 /* BaseHookLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = E9FD653F2055A93E00668DF9 /* BaseHookLogic.h */; };
+		E9FD65422055A93E00668DF9 /* BaseHookLogic.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9FD65402055A93E00668DF9 /* BaseHookLogic.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E9FD65212055A6C600668DF9 /* LabHookKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LabHookKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FD65242055A6C600668DF9 /* LabHookKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LabHookKit.h; sourceTree = "<group>"; };
 		E9FD65262055A6C600668DF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9FD652E2055A70000668DF9 /* HookLogicMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookLogicMgr.h; sourceTree = "<group>"; };
+		E9FD652F2055A70000668DF9 /* HookLogicMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HookLogicMgr.mm; sourceTree = "<group>"; };
+		E9FD653F2055A93E00668DF9 /* BaseHookLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHookLogic.h; sourceTree = "<group>"; };
+		E9FD65402055A93E00668DF9 /* BaseHookLogic.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseHookLogic.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,10 @@
 		E9FD65232055A6C600668DF9 /* LabHookKit */ = {
 			isa = PBXGroup;
 			children = (
+				E9FD652E2055A70000668DF9 /* HookLogicMgr.h */,
+				E9FD652F2055A70000668DF9 /* HookLogicMgr.mm */,
+				E9FD653F2055A93E00668DF9 /* BaseHookLogic.h */,
+				E9FD65402055A93E00668DF9 /* BaseHookLogic.mm */,
 				E9FD65242055A6C600668DF9 /* LabHookKit.h */,
 				E9FD65262055A6C600668DF9 /* Info.plist */,
 			);
@@ -60,6 +72,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9FD65252055A6C600668DF9 /* LabHookKit.h in Headers */,
+				E9FD65412055A93E00668DF9 /* BaseHookLogic.h in Headers */,
+				E9FD65322055A70000668DF9 /* HookLogicMgr.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +88,7 @@
 				E9FD651D2055A6C600668DF9 /* Frameworks */,
 				E9FD651E2055A6C600668DF9 /* Headers */,
 				E9FD651F2055A6C600668DF9 /* Resources */,
+				E9FD65352055A74B00668DF9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -125,11 +140,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E9FD65352055A74B00668DF9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nfunction recursive_copy_file()\n{\n    dirlist=$(ls $1)\n    for name in ${dirlist[*]}\n    do\n    if [[ -f $1/$name && ${name} == $3 ]]; then\n    #echo ${name} $3\n    cp -rf $1/$name $2/$name\n    elif [ -d $1/$name ]; then\n    mkdir -p $2/$name\n    # 递归拷贝\n    recursive_copy_file $1/$name $2/$name $3\n    fi\n    done\n}\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}${EFFECTIVE_PLATFORM_NAME}/${TARGET_NAME}.framework/Headers\"\nmkdir \"${BUILD_DIR}/${CONFIGURATION}${EFFECTIVE_PLATFORM_NAME}/${TARGET_NAME}.framework/Headers\"\nrecursive_copy_file \"${SOURCE_ROOT}/${TARGET_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}${EFFECTIVE_PLATFORM_NAME}/${TARGET_NAME}.framework/Headers\" \"*.h\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E9FD651C2055A6C600668DF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FD65422055A93E00668DF9 /* BaseHookLogic.mm in Sources */,
+				E9FD65332055A70000668DF9 /* HookLogicMgr.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,9 +264,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LabHookKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ymlab.dev.LabHookKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -247,9 +283,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LabHookKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ymlab.dev.LabHookKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -275,6 +314,7 @@
 				E9FD652B2055A6C600668DF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
