@@ -10,6 +10,8 @@
 
 #import <LabHookKit/BaseHookLogic.h>
 #import <LabHookKit/HookLogicMgr.h>
+#import <LabHookKit/BaseImplementLogic.h>
+#import <LabHookKit/ImplementLogicMgr.h>
 
 
 //! Project version number for LabHookKit.

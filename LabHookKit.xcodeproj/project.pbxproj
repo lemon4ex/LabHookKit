@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9E6B07C205660470074EB91 /* BaseImplementLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E6B07A205660470074EB91 /* BaseImplementLogic.h */; };
+		E9E6B07D205660470074EB91 /* BaseImplementLogic.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */; };
+		E9E6B080205663020074EB91 /* ImplementLogicMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E6B07E205663020074EB91 /* ImplementLogicMgr.h */; };
+		E9E6B081205663020074EB91 /* ImplementLogicMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6B07F205663020074EB91 /* ImplementLogicMgr.mm */; };
 		E9FD65252055A6C600668DF9 /* LabHookKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E9FD65242055A6C600668DF9 /* LabHookKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9FD65322055A70000668DF9 /* HookLogicMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = E9FD652E2055A70000668DF9 /* HookLogicMgr.h */; };
 		E9FD65332055A70000668DF9 /* HookLogicMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9FD652F2055A70000668DF9 /* HookLogicMgr.mm */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9E6B07A205660470074EB91 /* BaseImplementLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseImplementLogic.h; sourceTree = "<group>"; };
+		E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseImplementLogic.mm; sourceTree = "<group>"; };
+		E9E6B07E205663020074EB91 /* ImplementLogicMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImplementLogicMgr.h; sourceTree = "<group>"; };
+		E9E6B07F205663020074EB91 /* ImplementLogicMgr.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ImplementLogicMgr.mm; sourceTree = "<group>"; };
 		E9FD65212055A6C600668DF9 /* LabHookKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LabHookKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FD65242055A6C600668DF9 /* LabHookKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LabHookKit.h; sourceTree = "<group>"; };
 		E9FD65262055A6C600668DF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +66,10 @@
 				E9FD652F2055A70000668DF9 /* HookLogicMgr.mm */,
 				E9FD653F2055A93E00668DF9 /* BaseHookLogic.h */,
 				E9FD65402055A93E00668DF9 /* BaseHookLogic.mm */,
+				E9E6B07E205663020074EB91 /* ImplementLogicMgr.h */,
+				E9E6B07F205663020074EB91 /* ImplementLogicMgr.mm */,
+				E9E6B07A205660470074EB91 /* BaseImplementLogic.h */,
+				E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */,
 				E9FD65242055A6C600668DF9 /* LabHookKit.h */,
 				E9FD65262055A6C600668DF9 /* Info.plist */,
 			);
@@ -73,7 +85,9 @@
 			files = (
 				E9FD65252055A6C600668DF9 /* LabHookKit.h in Headers */,
 				E9FD65412055A93E00668DF9 /* BaseHookLogic.h in Headers */,
+				E9E6B07C205660470074EB91 /* BaseImplementLogic.h in Headers */,
 				E9FD65322055A70000668DF9 /* HookLogicMgr.h in Headers */,
+				E9E6B080205663020074EB91 /* ImplementLogicMgr.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +176,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9FD65422055A93E00668DF9 /* BaseHookLogic.mm in Sources */,
+				E9E6B081205663020074EB91 /* ImplementLogicMgr.mm in Sources */,
+				E9E6B07D205660470074EB91 /* BaseImplementLogic.mm in Sources */,
 				E9FD65332055A70000668DF9 /* HookLogicMgr.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
