@@ -30,9 +30,9 @@ namespace LabHookKit {
         void setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
         id getAssociatedObject(id object, const void *key);
         ClassHookInfo *getClassHookInfo(SEL sel);
-        bool hookInstanceMethod(const std::string &name, void *function);
-        bool hookClassMethod(const std::string &name, void *function);
-        bool hookObjCMethod(Class _class, const std::string &name, void *function);
+        bool hookInstanceMethod(const std::string &name, std::function<void()> *function); ///< 挂钩OC实例方法
+        bool hookClassMethod(const std::string &name, std::function<void()> *function); ///< 挂钩OC类方法
+        bool hookObjCMethod(Class _class, const std::string &name, std::function<void()> *function); ///< 挂钩OC方法
     public:
         virtual void initHook() = 0;
         

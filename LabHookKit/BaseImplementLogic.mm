@@ -9,17 +9,18 @@
 #import "BaseImplementLogic.h"
 
 namespace LabHookKit {
+    
     BaseImplementLogic::BaseImplementLogic(const std::string &superClass, const std::string &className):
     _superClass(superClass),
     _className(className)
     {
-        _class = objc_allocateClassPair(objc_getClass(_superClass.c_str()), _className.c_str(), 0);
-        objc_registerClassPair(_class);
+        
     }
     
-    bool BaseImplementLogic::addObjCMethod(const std::string &name, void *function, const std::string &types)
+    bool BaseImplementLogic::addObjCMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types)
     {
-        return class_addMethod(_class, sel_registerName(name.c_str()), (IMP)function, types.c_str());
+        void *function = &imp;
+        return class_addMethod(_class, sel_registerName(name.c_str()), (IMP)(*(size_t *)function), types.c_str());
     }
     
     BaseImplementLogic::~BaseImplementLogic()
@@ -30,6 +31,16 @@ namespace LabHookKit {
     void BaseImplementLogic::initImplement()
     {
         
+    }
+    
+    void BaseImplementLogic::allocateClass()
+    {
+        _class = objc_allocateClassPair(objc_getClass(_superClass.c_str()), _className.c_str(), 0);
+    }
+    
+    void BaseImplementLogic::registerClass()
+    {
+        objc_registerClassPair(_class);
     }
     
     std::string BaseImplementLogic::getClassName()

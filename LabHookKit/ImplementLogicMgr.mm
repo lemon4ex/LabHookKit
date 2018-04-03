@@ -20,7 +20,9 @@ namespace LabHookKit {
     }
     
     void ImplementLogicMgr::registerImplementLogic(BaseImplementLogic *logic){
+        logic->allocateClass();
         logic->initImplement();
+        logic->registerClass();
         _logicMap.insert(std::pair<std::string, BaseImplementLogic *>(logic->getClassName(),logic));
     }
     
