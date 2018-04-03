@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E980FC252073888E007D5878 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E980FC242073888E007D5878 /* Utils.h */; };
 		E9E6B07C205660470074EB91 /* BaseImplementLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E6B07A205660470074EB91 /* BaseImplementLogic.h */; };
 		E9E6B07D205660470074EB91 /* BaseImplementLogic.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */; };
 		E9E6B080205663020074EB91 /* ImplementLogicMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E6B07E205663020074EB91 /* ImplementLogicMgr.h */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E980FC242073888E007D5878 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E9E6B07A205660470074EB91 /* BaseImplementLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseImplementLogic.h; sourceTree = "<group>"; };
 		E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseImplementLogic.mm; sourceTree = "<group>"; };
 		E9E6B07E205663020074EB91 /* ImplementLogicMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImplementLogicMgr.h; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				E9E6B07A205660470074EB91 /* BaseImplementLogic.h */,
 				E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */,
 				E9FD65242055A6C600668DF9 /* LabHookKit.h */,
+				E980FC242073888E007D5878 /* Utils.h */,
 				E9FD65262055A6C600668DF9 /* Info.plist */,
 			);
 			path = LabHookKit;
@@ -83,6 +86,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E980FC252073888E007D5878 /* Utils.h in Headers */,
 				E9FD65252055A6C600668DF9 /* LabHookKit.h in Headers */,
 				E9FD65412055A93E00668DF9 /* BaseHookLogic.h in Headers */,
 				E9E6B07C205660470074EB91 /* BaseImplementLogic.h in Headers */,

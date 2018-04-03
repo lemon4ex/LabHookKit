@@ -12,7 +12,7 @@
 #import <LabHookKit/HookLogicMgr.h>
 #import <LabHookKit/BaseImplementLogic.h>
 #import <LabHookKit/ImplementLogicMgr.h>
-
+#import <LabHookKit/Utils.h>
 
 //! Project version number for LabHookKit.
 FOUNDATION_EXPORT double LabHookKitVersionNumber;

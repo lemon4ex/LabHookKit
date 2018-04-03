@@ -30,26 +30,28 @@ namespace LabHookKit {
         return objc_getAssociatedObject(object, key);
     }
     
-    bool BaseHookLogic::hookInstanceMethod(const std::string &name, std::function<void()> *function)
+    bool BaseHookLogic::hookInstanceMethod(const std::string &name, HookMagicFuncPtr imp)
     {
         Class _class = objc_getClass(_className.c_str());
-        return hookObjCMethod(_class, name, function);
+        return hookObjCMethod(_class, name, imp);
     }
     
-    bool BaseHookLogic::hookClassMethod(const std::string &name, std::function<void()> *function)
+    bool BaseHookLogic::hookClassMethod(const std::string &name, HookMagicFuncPtr imp)
     {
         Class _class = object_getClass(objc_getClass(_className.c_str()));
-        return hookObjCMethod(_class, name, function);
+        return hookObjCMethod(_class, name, imp);
     }
     
-    bool BaseHookLogic::hookObjCMethod(Class _class, const std::string &name, std::function<void()> *function)
+    bool BaseHookLogic::hookObjCMethod(Class _class, const std::string &name, HookMagicFuncPtr imp)
     {
         SEL sel = sel_getUid(name.c_str());
         Method originalMethod = class_getInstanceMethod(_class, sel);
         if (!originalMethod) {
             return false;
         }
-        if ((IMP)function == method_getImplementation(originalMethod)) {
+        
+        void *function = &imp;
+        if ((IMP)(*(size_t *)function) == method_getImplementation(originalMethod)) {
             return true;
         }
         

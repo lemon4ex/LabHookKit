@@ -14,6 +14,10 @@
 
 namespace LabHookKit {
     
+    class BaseHookLogic;
+    
+    typedef void (BaseHookLogic::*HookMagicFuncPtr)(SEL sel, ...);
+    
     struct ClassHookInfo {
         std::string className;
         std::string methodName;
@@ -30,9 +34,9 @@ namespace LabHookKit {
         void setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
         id getAssociatedObject(id object, const void *key);
         ClassHookInfo *getClassHookInfo(SEL sel);
-        bool hookInstanceMethod(const std::string &name, std::function<void()> *function); ///< 挂钩OC实例方法
-        bool hookClassMethod(const std::string &name, std::function<void()> *function); ///< 挂钩OC类方法
-        bool hookObjCMethod(Class _class, const std::string &name, std::function<void()> *function); ///< 挂钩OC方法
+        bool hookInstanceMethod(const std::string &name, HookMagicFuncPtr imp); ///< 挂钩OC实例方法
+        bool hookClassMethod(const std::string &name, HookMagicFuncPtr imp); ///< 挂钩OC类方法
+        bool hookObjCMethod(Class _class, const std::string &name, HookMagicFuncPtr imp); ///< 挂钩OC方法
     public:
         virtual void initHook() = 0;
         
