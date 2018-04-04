@@ -17,7 +17,19 @@ namespace LabHookKit {
         
     }
     
-    bool BaseImplementLogic::addObjCMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types)
+    bool BaseImplementLogic::addInstanceMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types)
+    {
+        Class _class = objc_getClass(_className.c_str());
+        return addObjCMethod(_class, name, imp, types);
+    }
+    
+    bool BaseImplementLogic::addClassMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types)
+    {
+        Class _class = object_getClass(objc_getClass(_className.c_str()));
+        return addObjCMethod(_class, name, imp, types);
+    }
+    
+    bool BaseImplementLogic::addObjCMethod(Class _class,const std::string &name, IMPMagicFuncPtr imp, const std::string &types)
     {
         void *function = &imp;
         return class_addMethod(_class, sel_registerName(name.c_str()), (IMP)(*(size_t *)function), types.c_str());
@@ -28,10 +40,10 @@ namespace LabHookKit {
         
     }
     
-    void BaseImplementLogic::initImplement()
-    {
-        
-    }
+//    void BaseImplementLogic::initImplement()
+//    {
+//        
+//    }
     
     void BaseImplementLogic::allocateClass()
     {

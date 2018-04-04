@@ -20,15 +20,15 @@ namespace LabHookKit {
         
     }
     
-    void BaseHookLogic::setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
-    {
-        objc_setAssociatedObject(object, key, value, policy);
-    }
-    
-    id BaseHookLogic::getAssociatedObject(id object, const void *key)
-    {
-        return objc_getAssociatedObject(object, key);
-    }
+//    void BaseHookLogic::setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
+//    {
+//        objc_setAssociatedObject(object, key, value, policy);
+//    }
+//    
+//    id BaseHookLogic::getAssociatedObject(id object, const void *key)
+//    {
+//        return objc_getAssociatedObject(object, key);
+//    }
     
     bool BaseHookLogic::hookInstanceMethod(const std::string &name, HookMagicFuncPtr imp)
     {
@@ -68,6 +68,24 @@ namespace LabHookKit {
         hookInfo->originImp = originImp;
         _hookInfoMap.insert(std::pair<std::string, ClassHookInfo *>(name,hookInfo));
         return true;
+    }
+    
+    bool BaseHookLogic::addInstanceMethod(const std::string &name, HookMagicFuncPtr imp, const std::string &types)
+    {
+        Class _class = objc_getClass(_className.c_str());
+        return addObjCMethod(_class, name, imp, types);
+    }
+    
+    bool BaseHookLogic::addClassMethod(const std::string &name, HookMagicFuncPtr imp, const std::string &types)
+    {
+        Class _class = object_getClass(objc_getClass(_className.c_str()));
+        return addObjCMethod(_class, name, imp, types);
+    }
+    
+    bool BaseHookLogic::addObjCMethod(Class _class,const std::string &name, HookMagicFuncPtr imp, const std::string &types)
+    {
+        void *function = &imp;
+        return class_addMethod(_class, sel_registerName(name.c_str()), (IMP)(*(size_t *)function), types.c_str());
     }
     
     std::string BaseHookLogic::getClassName()

@@ -31,12 +31,15 @@ namespace LabHookKit {
         BaseHookLogic(const std::string &className);
         std::string getClassName();
         virtual ~BaseHookLogic();
-        void setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
-        id getAssociatedObject(id object, const void *key);
+//        void setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
+//        id getAssociatedObject(id object, const void *key);
         ClassHookInfo *getClassHookInfo(SEL sel);
         bool hookInstanceMethod(const std::string &name, HookMagicFuncPtr imp); ///< 挂钩OC实例方法
         bool hookClassMethod(const std::string &name, HookMagicFuncPtr imp); ///< 挂钩OC类方法
         bool hookObjCMethod(Class _class, const std::string &name, HookMagicFuncPtr imp); ///< 挂钩OC方法
+        bool addInstanceMethod(const std::string &name, HookMagicFuncPtr imp, const std::string &types);
+        bool addClassMethod(const std::string &name, HookMagicFuncPtr imp, const std::string &types);
+        bool addObjCMethod(Class _class,const std::string &name, HookMagicFuncPtr imp, const std::string &types);
     public:
         virtual void initHook() = 0;
         

@@ -27,12 +27,14 @@ namespace LabHookKit {
         std::string getClassName();
         void allocateClass();
         void registerClass();
-        bool addObjCMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types);
+        bool addInstanceMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types);
+        bool addClassMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types);
+        bool addObjCMethod(Class _class,const std::string &name, IMPMagicFuncPtr imp, const std::string &types);
 //        bool addInstanceVar(const std::string &name, const std::string &types);
         virtual ~BaseImplementLogic();
         
         ///< 给类增加方法、属性等都在此函数中实现
-        virtual void initImplement();
+        virtual void initImplement() = 0;
     };
 }
 
