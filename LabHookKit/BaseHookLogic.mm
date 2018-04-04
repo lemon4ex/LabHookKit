@@ -55,7 +55,7 @@ namespace LabHookKit {
             return true;
         }
         
-        IMP originImp = class_replaceMethod(_class, sel, (IMP)function, method_getTypeEncoding(originalMethod));
+        IMP originImp = class_replaceMethod(_class, sel, (IMP)(*(size_t *)function), method_getTypeEncoding(originalMethod));
         if (!originImp) {
             originImp = method_getImplementation(originalMethod);
         }
