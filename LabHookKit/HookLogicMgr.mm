@@ -25,9 +25,16 @@ namespace LabHookKit {
         _logicMap.insert(std::pair<std::string, BaseHookLogic *>(logic->getClassName(),logic));
     }
     
-    BaseHookLogic *HookLogicMgr::getHookLogic(Class _class)
+//    template <typename T>
+    BaseHookLogic *HookLogicMgr::getHookLogic(id self)
     {
-        return getHookLogic(object_getClassName(_class));
+        std::string name = object_getClassName(self);
+        // 解决KVO时，系统创建的临时子类导致类名变化的问题
+        std::string::size_type idx = name.find("NSKVONotifying_");
+        if (idx == 0) {
+            name = name.substr(idx + strlen("NSKVONotifying_"));
+        }
+        return getHookLogic(name);
     }
     
     BaseHookLogic *HookLogicMgr::getHookLogic(const std::string &className)
