@@ -18,23 +18,29 @@ namespace LabHookKit {
     
     typedef void (BaseImplementLogic::*IMPMagicFuncPtr)(SEL sel, ...);
     
+    struct ImplementInfo{
+        bool isClassMethod; ///< 是否是类方法
+        std::string methodName; ///< 方法名
+        std::string typeEncoding; ///< 类型列表
+        IMPMagicFuncPtr methodIMP; ///< 方法实现
+    };
+    
     class BaseImplementLogic {
-        std::string _className;
-        std::string _superClass;
+
         Class _class;
     public:
-        BaseImplementLogic(const std::string &superClass, const std::string &className);
-        std::string getClassName();
         void allocateClass();
         void registerClass();
         bool addInstanceMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types);
         bool addClassMethod(const std::string &name, IMPMagicFuncPtr imp, const std::string &types);
         bool addObjCMethod(Class _class,const std::string &name, IMPMagicFuncPtr imp, const std::string &types);
-//        bool addInstanceVar(const std::string &name, const std::string &types);
+        Class getClass();
+    public:
         virtual ~BaseImplementLogic();
-        
-        ///< 给类增加方法、属性等都在此函数中实现
+        virtual std::string getClassName() = 0;
+        virtual std::string getSuperClassName() = 0;
         virtual void initImplement() = 0;
+        
     };
 }
 
