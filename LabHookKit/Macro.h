@@ -21,25 +21,38 @@ DECLARE_SELF(_class)
 #define DECLARE_CLASS(_class) \
 @class _class;
 
+// 声明Hook前的原OC方法
+#define DECLARE_ORIGIN_MESSAGE(_logic_class, _class, _ret_type, _sel, ...)\
+_ret_type (*_class##_originFuncPtr)(id, SEL, ##__VA_ARGS__) = ({\
+DECLARE_SELF(_class)\
+_logic_class *logic = dynamic_cast<_logic_class *>(LabHookKit::HookLogicMgr::sharedMgr()->getHookLogic(self));\
+LabHookKit::ClassHookInfo *info = logic->getClassHookInfo(_sel);\
+(_ret_type (*)(id, SEL, ##__VA_ARGS__))info->originImp;\
+})
+
+#define DECLARE_ORIGIN_MESSAGE_V2(_class, _ret_type, ...)\
+DECLARE_ORIGIN_MESSAGE(_class##HookLogic, _class, _ret_type, sel, ##__VA_ARGS__)
+
 // 调用Hook前的原OC方法
 #define ORIGIN_MESSAGE(_logic_class, _class, _ret_type, _sel, ...)\
-({\
-    DECLARE_SELF(_class)\
-    _logic_class *logic = dynamic_cast<_logic_class *>(LabHookKit::HookLogicMgr::sharedMgr()->getHookLogic(self));\
-    LabHookKit::ClassHookInfo *info = logic->getClassHookInfo(_sel);\
-    _ret_type (*originFuncPtr)(id, SEL, ...) = (_ret_type (*)(id, SEL, ...))info->originImp;\
-    originFuncPtr(self, _sel, ##__VA_ARGS__);\
-})
+_class##_originFuncPtr(self, _sel, ##__VA_ARGS__);
 
 #define ORIGIN_MESSAGE_V2(_class, _ret_type, ...)\
 ORIGIN_MESSAGE(_class##HookLogic, _class, _ret_type, sel, ##__VA_ARGS__)
+
+// 定义父类(super)的OC方法
+#define DECLARE_SUPER_MESSAGE(_class, _ret_type, _sel, ...)\
+_ret_type (*_class##_super)(struct objc_super *, SEL, ##__VA_ARGS__) = (_ret_type (*)(struct objc_super *, SEL, ##__VA_ARGS__))objc_msgSendSuper;
+
+#define DECLARE_SUPER_MESSAGE_V2(_class, _ret_type, ...)\
+DECLARE_SUPER_MESSAGE(_class, _ret_type, sel, ##__VA_ARGS__)
 
 // 调用父类(super)的OC方法
 #define SUPER_MESSAGE(_class, _ret_type, _sel, ...)\
 ({\
 DECLARE_SELF(_class)\
 struct objc_super superClass = {self, self.superclass};\
-((_ret_type (*)(struct objc_super *, SEL, ...))objc_msgSendSuper)(&superClass, _sel, ##__VA_ARGS__);\
+_class##_super(&superClass, _sel, ##__VA_ARGS__);\
 })
 
 #define SUPER_MESSAGE_V2(_class, _ret_type, ...)\
