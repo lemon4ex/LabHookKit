@@ -24,7 +24,7 @@ DECLARE_SELF(_class)
 // 调用Hook前的原OC方法
 #define ORIGIN_MESSAGE(_logic_class, _class, _ret_type, _sel, ...)\
 ({\
-    _class *self = (__bridge _class *)this;\
+    DECLARE_SELF(_class)\
     _logic_class *logic = dynamic_cast<_logic_class *>(LabHookKit::HookLogicMgr::sharedMgr()->getHookLogic(self));\
     LabHookKit::ClassHookInfo *info = logic->getClassHookInfo(_sel);\
     _ret_type (*originFuncPtr)(id, SEL, ...) = (_ret_type (*)(id, SEL, ...))info->originImp;\
