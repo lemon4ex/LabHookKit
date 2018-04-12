@@ -42,10 +42,12 @@ namespace LabHookKit {
         bool addInstanceMethod(const std::string &name, HookMagicFuncPtr imp, const std::string &types);
         bool addClassMethod(const std::string &name, HookMagicFuncPtr imp, const std::string &types);
         bool addObjCMethod(Class _class,const std::string &name, HookMagicFuncPtr imp, const std::string &types);
+        
     public:
         virtual ~BaseHookLogic();
         virtual void initHook() = 0;
-        virtual std::string getClassName() = 0;
+        virtual std::string getClassName() = 0; ///< 被Hook的OC类名
+        
     };
 }
 #endif
