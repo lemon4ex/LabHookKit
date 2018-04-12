@@ -194,21 +194,21 @@ _ret_type _logic_class::_func(SEL sel, ##__VA_ARGS__)
 
 //////////////// 实现 v2 ////////////////
 #define DECLARE_IMPLEMENT_MESSAGE_MAP_V2(_super_class, _class) \
-DECLARE_IMPLEMENT_MESSAGE_MAP(_class##HookLogic, _super_class, _class)
+DECLARE_IMPLEMENT_MESSAGE_MAP(_class##Logic, _super_class, _class)
 
 #define BEGIN_IMPLEMENT_MESSAGE_MAP_V2(_class) \
-BEGIN_IMPLEMENT_MESSAGE_MAP(_class##HookLogic)
+BEGIN_IMPLEMENT_MESSAGE_MAP(_class##Logic)
 
 #define END_IMPLEMENT_MESSAGE_MAP_V2(_class)\
-END_IMPLEMENT_MESSAGE_MAP(_class##HookLogic)
+END_IMPLEMENT_MESSAGE_MAP(_class##Logic)
 
 #define ADD_IMPLEMENT_INSTANCE_MESSAGE_V2(_class, _name, _func, _type) \
-ADD_IMPLEMENT_INSTANCE_MESSAGE(_class##HookLogic, _name, _func, _type)
+ADD_IMPLEMENT_INSTANCE_MESSAGE(_class##Logic, _name, _func, _type)
 
 #define ADD_IMPLEMENT_CLASS_MESSAGE_V2(_class, _name, _func, _type) \
-ADD_IMPLEMENT_CLASS_MESSAGE(_class##HookLogic, _name, _func, _type)
+ADD_IMPLEMENT_CLASS_MESSAGE(_class##Logic, _name, _func, _type)
 
 #define DEFINITION_IMPLEMENT_MESSAGE_V2(_class, _ret_type, _func, ...)\
-DEFINITION_IMPLEMENT_MESSAGE(_class##HookLogic, _ret_type, _func, ##__VA_ARGS__)
+DEFINITION_IMPLEMENT_MESSAGE(_class##Logic, _ret_type, _func, ##__VA_ARGS__)
 
 #endif /* Utils_h */
