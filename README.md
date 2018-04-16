@@ -48,7 +48,8 @@
 #import <Foundation/Foundation.h>
 #include <LabHookKit/LabHookKit.h>
 
-// 继承至 BaseHookLogic，实现自己的逻辑
+// Hook TypingController 类
+// 逻辑类继承BaseHookLogic，实现自己的逻辑
 class TypingControllerHookLogic : public LabHookKit::BaseHookLogic {
     
 public:
@@ -101,6 +102,7 @@ DEFINITION_HOOK_MESSAGE(TypingControllerHookLogic, void, trySendTyping,int type)
 #import <Foundation/Foundation.h>
 #include <LabHookKit/LabHookKit.h>
 
+// Hook GameController 类
 class GameControllerHookLogic : public LabHookKit::BaseHookLogic {
     
 public:
@@ -148,9 +150,11 @@ DEFINITION_HOOK_MESSAGE_V2(GameController, void, setGameContentForMsgWrap,CMessa
 - (void)updateCellWithSessionInfo:(MMSessionInfo *)sessionInfo contact:(CContact *)currentContact backgroundImage:(BOOL)backgroundImage;
 @end
 
+// 生成TCCChatSiderbarCell类需要的逻辑类
 class TCCChatSiderbarCellLogic : public LabHookKit::BaseImplementLogic {
     
 public:    
+    // 绑定，参数：逻辑类、OC父类、需要生成的类
     DECLARE_IMPLEMENT_MESSAGE_MAP(TCCChatSiderbarCellLogic, UITableViewCell, TCCChatSiderbarCell)
     
 //    virtual void initImplement();
