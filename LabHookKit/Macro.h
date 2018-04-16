@@ -34,11 +34,11 @@ LabHookKit::ClassHookInfo *info = logic->getClassHookInfo(_sel);\
 DECLARE_ORIGIN_MESSAGE(_class##HookLogic, _class, _ret_type, sel, ##__VA_ARGS__)
 
 // 调用Hook前的原OC方法
-#define ORIGIN_MESSAGE(_logic_class, _class, _ret_type, _sel, ...)\
+#define ORIGIN_MESSAGE(_logic_class, _class, _sel, ...)\
 _class##_originFuncPtr(self, _sel, ##__VA_ARGS__);
 
-#define ORIGIN_MESSAGE_V2(_class, _ret_type, ...)\
-ORIGIN_MESSAGE(_class##HookLogic, _class, _ret_type, sel, ##__VA_ARGS__)
+#define ORIGIN_MESSAGE_V2(_class, ...)\
+ORIGIN_MESSAGE(_class##HookLogic, _class, sel, ##__VA_ARGS__)
 
 // 定义父类(super)的OC方法
 #define DECLARE_SUPER_MESSAGE(_class, _ret_type, _sel, ...)\
@@ -48,15 +48,15 @@ _ret_type (*_class##_super)(struct objc_super *, SEL, ##__VA_ARGS__) = (_ret_typ
 DECLARE_SUPER_MESSAGE(_class, _ret_type, sel, ##__VA_ARGS__)
 
 // 调用父类(super)的OC方法
-#define SUPER_MESSAGE(_class, _ret_type, _sel, ...)\
+#define SUPER_MESSAGE(_class, _sel, ...)\
 ({\
 DECLARE_SELF(_class)\
 struct objc_super superClass = {self, self.superclass};\
 _class##_super(&superClass, _sel, ##__VA_ARGS__);\
 })
 
-#define SUPER_MESSAGE_V2(_class, _ret_type, ...)\
-SUPER_MESSAGE(_class, _ret_type, sel, ##__VA_ARGS__)
+#define SUPER_MESSAGE_V2(_class, ...)\
+SUPER_MESSAGE(_class, sel, ##__VA_ARGS__)
 
 //////////////// Hook v1 ////////////////
 // 声明一个Hook消息映射，帮助生成核心的函数和类变量
