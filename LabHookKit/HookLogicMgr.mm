@@ -26,16 +26,16 @@ namespace LabHookKit {
     }
     
 //    template <typename T>
-    BaseHookLogic *HookLogicMgr::getHookLogic(id self)
-    {
-        std::string name = object_getClassName(self);
-        // 解决KVO时，系统创建的临时子类导致类名变化的问题
-        std::string::size_type idx = name.find("NSKVONotifying_");
-        if (idx == 0) {
-            name = name.substr(idx + strlen("NSKVONotifying_"));
-        }
-        return getHookLogic(name);
-    }
+//    BaseHookLogic *HookLogicMgr::getHookLogic(id self)
+//    {
+//        std::string name = object_getClassName(self);
+//        // 解决KVO时，系统创建的临时子类导致类名变化的问题
+//        std::string::size_type idx = name.find("NSKVONotifying_");
+//        if (idx == 0) {
+//            name = name.substr(idx + strlen("NSKVONotifying_"));
+//        }
+//        return getHookLogic(name);
+//    }
     
     BaseHookLogic *HookLogicMgr::getHookLogic(const std::string &className)
     {

@@ -27,7 +27,7 @@ namespace LabHookKit {
         
         void registerHookLogic(BaseHookLogic *logic);
         BaseHookLogic *getHookLogic(const std::string &className);
-        BaseHookLogic *getHookLogic(id self);
+//        BaseHookLogic *getHookLogic(id self);
     };
 }
 
