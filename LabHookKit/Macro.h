@@ -21,6 +21,9 @@ DECLARE_SELF(_class)
 #define DECLARE_CLASS(_class) \
 @class _class;
 
+#define DECLARE_CLASS_V2(_class) \
+DECLARE_CLASS(_class)
+
 // 声明Hook前的原OC方法
 #define DECLARE_ORIGIN_MESSAGE(_logic_class, _class, _ret_type, _sel, ...)\
 _ret_type (*_class##_originFuncPtr)(id, SEL, ##__VA_ARGS__) = ({\
@@ -220,6 +223,9 @@ ADD_IMPLEMENT_INSTANCE_MESSAGE(_class##Logic, _name, _func, _type)
 
 #define ADD_IMPLEMENT_CLASS_MESSAGE_V2(_class, _name, _func, _type) \
 ADD_IMPLEMENT_CLASS_MESSAGE(_class##Logic, _name, _func, _type)
+
+#define DECLARE_IMPLEMENT_MESSAGE_V2(_ret_type, _func, ...)\
+DECLARE_IMPLEMENT_MESSAGE(_ret_type, _func, ##__VA_ARGS__)
 
 #define DEFINITION_IMPLEMENT_MESSAGE_V2(_class, _ret_type, _func, ...)\
 DEFINITION_IMPLEMENT_MESSAGE(_class##Logic, _ret_type, _func, ##__VA_ARGS__)
