@@ -64,8 +64,6 @@ SUPER_MESSAGE(_class, sel, ##__VA_ARGS__)
 //////////////// Hook v1 ////////////////
 // 声明一个Hook消息映射，帮助生成核心的函数和类变量
 #define DECLARE_HOOK_MESSAGE_MAP(_logic_class, _class) \
-private: \
-static const LabHookKit::HookModifyInfo _ ## _logic_class ## _msgInfo[]; \
 public: \
 virtual void initHook();\
 virtual std::string getClassName(){ \
@@ -74,52 +72,27 @@ return #_class; \
 
 // 开始Hook消息映射
 #define BEGIN_HOOK_MESSAGE_MAP(_logic_class) \
-const LabHookKit::HookModifyInfo _logic_class::_ ## _logic_class ## _msgInfo[] =  \
-{
+void _logic_class::initHook(){ \
 
 // 结束Hook消息映射
 #define END_HOOK_MESSAGE_MAP(_logic_class)\
-};\
-void _logic_class::initHook(){ \
-for (size_t i = 0 ; i < sizeof(_logic_class::_ ## _logic_class ## _msgInfo)/sizeof(LabHookKit::HookModifyInfo); i++) {\
-if(_ ## _logic_class ## _msgInfo[i].modifyType == 0)\
-{\
-if (_ ## _logic_class ## _msgInfo[i].isClassMethod) {\
-hookClassMethod(_ ## _logic_class ## _msgInfo[i].methodName, _ ## _logic_class ## _msgInfo[i].methodIMP);\
-}\
-else \
-{\
-hookInstanceMethod(_ ## _logic_class ## _msgInfo[i].methodName, _ ## _logic_class ## _msgInfo[i].methodIMP);\
-}\
-}\
-else\
-{\
-if (_ ## _logic_class ## _msgInfo[i].isClassMethod) {\
-addClassMethod(_ ## _logic_class ## _msgInfo[i].methodName, _ ## _logic_class ## _msgInfo[i].methodIMP, _ ## _logic_class ## _msgInfo[i].typeEncoding);\
-}\
-else \
-{\
-addInstanceMethod(_ ## _logic_class ## _msgInfo[i].methodName, _ ## _logic_class ## _msgInfo[i].methodIMP, _ ## _logic_class ## _msgInfo[i].typeEncoding);\
-}\
-}\
-}\
-}
+};
 
 // 添加新实例方法
 #define ADD_HOOK_INSTANCE_MESSAGE(_logic_class, _name, _func, _type) \
-{false, #_name, #_type, (LabHookKit::HookMagicFuncPtr)&_logic_class::_func, 1}, 
+addInstanceMethod(# _name, (LabHookKit::HookMagicFuncPtr)&_logic_class::_func, # _type);
 
 // 添加新类方法
 #define ADD_HOOK_CLASS_MESSAGE(_logic_class, _name, _func, _type) \
-{true, #_name, #_type, (LabHookKit::HookMagicFuncPtr)&_logic_class::_func, 1}, 
+addClassMethod(# _name, (LabHookKit::HookMagicFuncPtr)&_logic_class::_func, # _type);
 
 // Hook实例方法
 #define HOOK_INSTANCE_MESSAGE(_logic_class, _name, _func) \
-{false, #_name, "", (LabHookKit::HookMagicFuncPtr)&_logic_class::_func, 0}, 
+hookInstanceMethod(# _name, (LabHookKit::HookMagicFuncPtr)&_logic_class::_func);
 
 // Hook类方法
 #define HOOK_CLASS_MESSAGE(_logic_class, _name, _func) \
-{true, #_name, "", (LabHookKit::HookMagicFuncPtr)&_logic_class::_func, 0}, 
+hookClassMethod(# _name, (LabHookKit::HookMagicFuncPtr)&_logic_class::_func);
 
 // 声明一个新的方法实现
 #define DECLARE_HOOK_MESSAGE(_ret_type, _func_name, ...)\
@@ -160,8 +133,6 @@ DEFINITION_HOOK_MESSAGE(_class##HookLogic, _ret_type, _func_name, ##__VA_ARGS__)
 //////////////// 实现 v1 ////////////////
 // 声明一个实现新类的消息映射，帮助生成核心的函数和类变量
 #define DECLARE_IMPLEMENT_MESSAGE_MAP(_logic_class, _super_class, _class) \
-private: \
-static const LabHookKit::ImplementInfo _ ## _logic_class ## _msgInfo[]; \
 public: \
 virtual void initImplement();\
 virtual std::string getClassName(){ \
@@ -174,31 +145,19 @@ return #_super_class; \
 
 // 开始实现新的消息映射
 #define BEGIN_IMPLEMENT_MESSAGE_MAP(_logic_class) \
-const LabHookKit::ImplementInfo _logic_class::_ ## _logic_class ## _msgInfo[] =  \
-{
+void _logic_class::initImplement(){ \
 
 // 结束实现新的消息映射
 #define END_IMPLEMENT_MESSAGE_MAP(_logic_class)\
-};\
-void _logic_class::initImplement(){ \
-for (size_t i = 0 ; i < sizeof(_logic_class::_ ## _logic_class ## _msgInfo)/sizeof(LabHookKit::ImplementInfo); i++) {\
-if (_ ## _logic_class ## _msgInfo[i].isClassMethod) {\
-addClassMethod(_ ## _logic_class ## _msgInfo[i].methodName, _ ## _logic_class ## _msgInfo[i].methodIMP, _ ## _logic_class ## _msgInfo[i].typeEncoding);\
-}\
-else \
-{\
-addInstanceMethod(_ ## _logic_class ## _msgInfo[i].methodName, _ ## _logic_class ## _msgInfo[i].methodIMP, _ ## _logic_class ## _msgInfo[i].typeEncoding);\
-}\
-}\
-}
+};
 
 // 添加新实例方法
 #define ADD_IMPLEMENT_INSTANCE_MESSAGE(_logic_class, _name, _func, _type) \
-{false, #_name, _type, (LabHookKit::IMPMagicFuncPtr)&_logic_class::_func}, 
+addInstanceMethod(# _name, (LabHookKit::IMPMagicFuncPtr)&_logic_class::_func, # _type);
 
 // 添加新类方法
 #define ADD_IMPLEMENT_CLASS_MESSAGE(_logic_class, _name, _func, _type) \
-{true, #_name, _type, (LabHookKit::IMPMagicFuncPtr)&_logic_class::_func}, 
+addClassMethod(# _name, (LabHookKit::IMPMagicFuncPtr)&_logic_class::_func, # _type);
 
 // 声明一个新类的方法
 #define DECLARE_IMPLEMENT_MESSAGE(_ret_type, _func, ...)\
