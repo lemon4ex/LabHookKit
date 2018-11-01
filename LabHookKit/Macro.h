@@ -9,6 +9,8 @@
 #ifndef Macro_h
 #define Macro_h
 
+#import <objc/runtime.h>
+#import <objc/message.h>
 // 定义self变量
 #define DECLARE_SELF(_class) \
 _class *self = (__bridge _class *)this;

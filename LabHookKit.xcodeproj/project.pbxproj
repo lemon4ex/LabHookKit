@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E980FC252073888E007D5878 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = E980FC242073888E007D5878 /* Macro.h */; };
+		E992C69F20BB0933002C37F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E992C69E20BB0933002C37F4 /* main.m */; };
+		E992C6A220BB0933002C37F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E992C6A120BB0933002C37F4 /* AppDelegate.m */; };
+		E992C6A520BB0933002C37F4 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E992C6A420BB0933002C37F4 /* ViewController.mm */; };
+		E992C6A820BB0933002C37F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E992C6A620BB0933002C37F4 /* Main.storyboard */; };
+		E992C6AA20BB0933002C37F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E992C6A920BB0933002C37F4 /* Assets.xcassets */; };
+		E992C6AD20BB0933002C37F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E992C6AB20BB0933002C37F4 /* LaunchScreen.storyboard */; };
+		E992C6B420BB0947002C37F4 /* LabHookKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9FD65212055A6C600668DF9 /* LabHookKit.framework */; };
 		E9E6B07C205660470074EB91 /* BaseImplementLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E6B07A205660470074EB91 /* BaseImplementLogic.h */; };
 		E9E6B07D205660470074EB91 /* BaseImplementLogic.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */; };
 		E9E6B080205663020074EB91 /* ImplementLogicMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E6B07E205663020074EB91 /* ImplementLogicMgr.h */; };
@@ -19,8 +26,28 @@
 		E9FD65422055A93E00668DF9 /* BaseHookLogic.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9FD65402055A93E00668DF9 /* BaseHookLogic.mm */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E992C6B220BB0943002C37F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9FD65182055A6C600668DF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9FD65202055A6C600668DF9;
+			remoteInfo = LabHookKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E980FC242073888E007D5878 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		E992C69B20BB0933002C37F4 /* HooKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HooKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E992C69E20BB0933002C37F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E992C6A020BB0933002C37F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E992C6A120BB0933002C37F4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E992C6A320BB0933002C37F4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E992C6A420BB0933002C37F4 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		E992C6A720BB0933002C37F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E992C6A920BB0933002C37F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E992C6AC20BB0933002C37F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E992C6AE20BB0933002C37F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E6B07A205660470074EB91 /* BaseImplementLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseImplementLogic.h; sourceTree = "<group>"; };
 		E9E6B07B205660470074EB91 /* BaseImplementLogic.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseImplementLogic.mm; sourceTree = "<group>"; };
 		E9E6B07E205663020074EB91 /* ImplementLogicMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImplementLogicMgr.h; sourceTree = "<group>"; };
@@ -35,6 +62,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E992C69820BB0933002C37F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E992C6B420BB0947002C37F4 /* LabHookKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9FD651D2055A6C600668DF9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,10 +80,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E992C69C20BB0933002C37F4 /* HooKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E992C6A020BB0933002C37F4 /* AppDelegate.h */,
+				E992C6A120BB0933002C37F4 /* AppDelegate.m */,
+				E992C6A320BB0933002C37F4 /* ViewController.h */,
+				E992C6A420BB0933002C37F4 /* ViewController.mm */,
+				E992C6A620BB0933002C37F4 /* Main.storyboard */,
+				E992C6A920BB0933002C37F4 /* Assets.xcassets */,
+				E992C6AB20BB0933002C37F4 /* LaunchScreen.storyboard */,
+				E992C6AE20BB0933002C37F4 /* Info.plist */,
+				E992C69D20BB0933002C37F4 /* Supporting Files */,
+			);
+			path = HooKitDemo;
+			sourceTree = "<group>";
+		};
+		E992C69D20BB0933002C37F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E992C69E20BB0933002C37F4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E9FD65172055A6C600668DF9 = {
 			isa = PBXGroup;
 			children = (
 				E9FD65232055A6C600668DF9 /* LabHookKit */,
+				E992C69C20BB0933002C37F4 /* HooKitDemo */,
 				E9FD65222055A6C600668DF9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				E9FD65212055A6C600668DF9 /* LabHookKit.framework */,
+				E992C69B20BB0933002C37F4 /* HooKitDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +159,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E992C69A20BB0933002C37F4 /* HooKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E992C6B120BB0933002C37F4 /* Build configuration list for PBXNativeTarget "HooKitDemo" */;
+			buildPhases = (
+				E992C69720BB0933002C37F4 /* Sources */,
+				E992C69820BB0933002C37F4 /* Frameworks */,
+				E992C69920BB0933002C37F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E992C6B320BB0943002C37F4 /* PBXTargetDependency */,
+			);
+			name = HooKitDemo;
+			productName = HooKitDemo;
+			productReference = E992C69B20BB0933002C37F4 /* HooKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E9FD65202055A6C600668DF9 /* LabHookKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9FD65292055A6C600668DF9 /* Build configuration list for PBXNativeTarget "LabHookKit" */;
@@ -126,6 +205,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = lemon4ex;
 				TargetAttributes = {
+					E992C69A20BB0933002C37F4 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = FQU24TXA6W;
+					};
 					E9FD65202055A6C600668DF9 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -137,6 +220,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = E9FD65172055A6C600668DF9;
 			productRefGroup = E9FD65222055A6C600668DF9 /* Products */;
@@ -144,11 +228,22 @@
 			projectRoot = "";
 			targets = (
 				E9FD65202055A6C600668DF9 /* LabHookKit */,
+				E992C69A20BB0933002C37F4 /* HooKitDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E992C69920BB0933002C37F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E992C6AD20BB0933002C37F4 /* LaunchScreen.storyboard in Resources */,
+				E992C6AA20BB0933002C37F4 /* Assets.xcassets in Resources */,
+				E992C6A820BB0933002C37F4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9FD651F2055A6C600668DF9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,6 +270,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E992C69720BB0933002C37F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E992C6A520BB0933002C37F4 /* ViewController.mm in Sources */,
+				E992C6A220BB0933002C37F4 /* AppDelegate.m in Sources */,
+				E992C69F20BB0933002C37F4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9FD651C2055A6C600668DF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,7 +293,70 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E992C6B320BB0943002C37F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E9FD65202055A6C600668DF9 /* LabHookKit */;
+			targetProxy = E992C6B220BB0943002C37F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E992C6A620BB0933002C37F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E992C6A720BB0933002C37F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E992C6AB20BB0933002C37F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E992C6AC20BB0933002C37F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		E992C6AF20BB0933002C37F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FQU24TXA6W;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = HooKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-mllvm",
+					"-enable-allobf",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.ymlab.dev.HooKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E992C6B020BB0933002C37F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FQU24TXA6W;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = HooKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-mllvm",
+					"-enable-allobf",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.ymlab.dev.HooKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E9FD65272055A6C600668DF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -285,6 +453,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = LabHookKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -310,6 +479,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = (
+					"-mllvm",
+					"-enable-strcry",
+					"-mllvm",
+					"-enable-bcfobf",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.ymlab.dev.LabHookKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -319,6 +494,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E992C6B120BB0933002C37F4 /* Build configuration list for PBXNativeTarget "HooKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E992C6AF20BB0933002C37F4 /* Debug */,
+				E992C6B020BB0933002C37F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E9FD651B2055A6C600668DF9 /* Build configuration list for PBXProject "LabHookKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
